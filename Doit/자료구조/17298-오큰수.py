@@ -8,7 +8,7 @@ input = sys.stdin.readline
 # 값 입력받기
 N = int(input())
 ary = list(map(int, input().split()))
-
+print('test')
 # 변수 선언
 result = [0] * N # 오큰 수 담을 리스트
 stack = [] # 스택
