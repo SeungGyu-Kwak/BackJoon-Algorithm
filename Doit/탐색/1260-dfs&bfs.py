@@ -12,39 +12,34 @@ A = [[] for _ in range(N+1)] # 인접리스트
 myQueue = deque() # bfs를 위한 queue
 visited = [False] * (N+1) # 노드방문 확인 리스트
 
-# 인접리스트 초기화
-for i in range(M):
-  s, e = map(int, input().split())
-  A[s].append(e)
-  A[e].append(s)
-for i in range(1, N+1): # 노드번호가 작은 것을 먼저 방문하기위해 오름차순으로 정렬
-  A[i].sort()
+# 인접리스트 생성
+for _ in range(M):
+  u, v = map(int ,input().split())
+  A[u].append(v)
+  A[v].append(u)
 
-
-# dfs 함수
+# dfs 메소드
 def dfs(v):
-  visited[v] = True
   print(v, end = ' ')
+  visited[v] = True # 방문 체크함
   for i in A[v]:
     if not visited[i]:
       dfs(i)
 
-# bfs 함수
+# bfs 메소드
 def bfs(v):
-  myQueue.append(v)
+  queue = deque() # 큐 생성
+  queue.append(v)
   visited[v] = True
-  while myQueue:
-    now_Node = myQueue.popleft()
-    print(now_Node, end = ' ')
-    for i in A[now_Node]:
+  while queue: # 큐가 빌때까지
+    now = queue.popleft()
+    print(now, end = ' ')
+    for i in A[now]:
       if not visited[i]:
         visited[i] = True
-        myQueue.append(i)
+        queue.append(i)
 
 dfs(V)
-visited = [False] * (N+1) # 리스트 초기화
 print()
+visited = [False] * (N+1)
 bfs(V)
-
-
-

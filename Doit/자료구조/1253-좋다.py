@@ -7,25 +7,27 @@ input = sys.stdin.readline
 N = int(input())
 ary = list(map(int, input().split()))
 
+# ary 정렬하기
 ary.sort()
 count = 0
-for n in range(N):
-  i = 0
-  j = N - 1
-  target = ary[n]
+for t in range(N):
+  find = ary[t] # 찾고자 하는 수
+  i = 0 # 시작 포인터
+  j = len(ary)-1 # 끝 포인터
   while i < j:
-    if i == n:
-      i += 1
-      continue
-    if j == n:
+    if ary[i] + ary[j] == find:
+      if i != t and j != t:
+        count += 1
+        break
+      elif i == t:
+        i += 1
+      elif j == t:
+        j -= 1
+    elif ary[i] + ary[j] > find:
       j -= 1
-      continue
-    if ary[i] + ary[j] == target:
-      count += 1
-      break
-    elif ary[i] + ary[j] < target:
+    else:
       i += 1
-    elif ary[i] + ary[j] > target:
-      j -= 1
+
 print(count)
+
 

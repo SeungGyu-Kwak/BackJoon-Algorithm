@@ -4,15 +4,14 @@ from collections import deque
 sys.stdin = open('input.txt', 'r')
 input = sys.stdin.readline
 
-# N : 데이터 개수, L : 슬라이딩 길이
-N, L = map(int, input().split()) 
+N, L = map(int, input().split())
+A = list(map(int, input().split()))
 myqueue = deque()
-ary = list(map(int, input().split()))
 
 for i in range(N):
-  while myqueue and myqueue[-1][0] > ary[i]:
+  while myqueue and myqueue[-1][0] > A[i]:
     myqueue.pop()
-  myqueue.append((ary[i], i))
-  if myqueue[0][1] <= i - L: # 범위에서 벗어난 값은 덱에서 제거
+  myqueue.append((A[i], i))
+  if myqueue[0][1] <= i - L:
     myqueue.popleft()
-  print(myqueue[0][0], end = ' ')
+  print(myqueue[0][0], end=' ')
