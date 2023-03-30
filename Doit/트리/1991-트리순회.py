@@ -3,38 +3,36 @@ import sys
 sys.stdin = open('input.txt', 'r')
 input = sys.stdin.readline
 
-N = int(input()) # 노드의 개수
-tree = {} # 딕셔너리로 저장
+N = int(input())
+tree = {}
+
 for i in range(N):
   root, left, right = input().split()
   tree[root] = [left, right]
 
-# 전위 순회 구현
-def preorder(n):
-  if n == '.':
+def preOrder(now):
+  if now == '.':
     return
-  print(n, end='')
-  preorder(tree[n][0]) # 왼쪽 탐색
-  preorder(tree[n][1]) # 오른쪽 탐색
+  print(now, end='')
+  preOrder(tree[now][0])
+  preOrder(tree[now][1])
 
-# 중위 순회 구현
-def inorder(n):
-  if n == '.':
+def inOrder(now):
+  if now == '.':
     return
-  inorder(tree[n][0]) # 왼쪽 탐색
-  print(n, end='')
-  inorder(tree[n][1]) # 오른쪽 탐색
+  inOrder(tree[now][0])
+  print(now, end='')
+  inOrder(tree[now][1])
 
-# 후위 순회 구현
-def postorder(n):
-  if n == '.':
+def postOrder(now):
+  if now == '.':
     return
-  postorder(tree[n][0]) # 왼쪽 탐색
-  postorder(tree[n][1]) # 오른쪽 탐색
-  print(n , end = '')
+  postOrder(tree[now][0])
+  postOrder(tree[now][1])
+  print(now, end='')
 
-preorder('A')
+preOrder('A')
 print()
-inorder('A')
+inOrder('A')
 print()
-postorder('A')
+postOrder('A')
