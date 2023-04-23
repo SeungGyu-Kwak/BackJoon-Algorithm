@@ -4,6 +4,7 @@ sys.stdin = open('input.txt', 'r')
 input = sys.stdin.readline
 
 N, M = map(int, input().split())
+            
 
 distance = [[sys.maxsize for _ in range(N+1)] for _ in range(N+1)]
 

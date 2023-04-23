@@ -21,19 +21,20 @@ for _ in range(M):
 # dfs 메소드
 def dfs(v):
   print(v, end = ' ')
-  visited[v] = True # 방문 체크함
+  visited[v] = True
   for i in A[v]:
     if not visited[i]:
       dfs(i)
-
+  
 # bfs 메소드
 def bfs(v):
-  queue = deque() # 큐 생성
-  queue.append(v)
+  queue = deque()
   visited[v] = True
-  while queue: # 큐가 빌때까지
+  queue.append(v)
+  
+  while queue:
     now = queue.popleft()
-    print(now, end = ' ')
+    print(now, end = " ")
     for i in A[now]:
       if not visited[i]:
         visited[i] = True

@@ -3,21 +3,22 @@ import sys
 sys.stdin = open('input.txt', 'r')
 input = sys.stdin.readline
 
-data = input().split('-')
+listA = list(map(str,input().split("-")))
+#print(listA)
 
 def mySum(i):
-  sum = 0
-  temp = str(i).split('+')
-  for t in temp:
-    sum += int(t)
-  return sum
+    sum = 0
+    temp = str(i).split("+")
+    for i in temp:
+        sum += int(i)
+    return sum
 
 answer = 0
+for i in range(len(listA)):
+    temp = mySum(listA[i])
+    if i == 0:
+        answer += temp
+    else:
+        answer -= temp
 
-for i in range(len(data)):
-  tmp = mySum(data[i])
-  if i == 0:
-    answer += tmp
-  else:
-    answer -= tmp
 print(answer)
